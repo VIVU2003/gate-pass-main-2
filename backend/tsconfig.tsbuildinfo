@@ -1,0 +1,1 @@
+{"root":["./src/config.ts","./src/index.ts","./src/lib/validators/adminvalidator.ts","./src/lib/validators/guardvalidator.ts","./src/lib/validators/uservalidator.ts","./src/middleware/aauth.ts","./src/middleware/gauth.ts","./src/middleware/uauth.ts","./src/routes/adminrouter.ts","./src/routes/guardrouter.ts","./src/routes/userrouter.ts"],"version":"5.7.3"}
