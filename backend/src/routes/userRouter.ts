@@ -9,7 +9,7 @@ import {JWT_SECRET} from "../config";
 import uAuth from "../middleware/uAuth"
 import { any } from "zod";
 import nodemailer from "nodemailer";
-import crypto from "crypto";
+import * as crypto from "crypto";
 import {addHours} from "date-fns";
 const transporter = nodemailer.createTransport({
     service:"gmail", 
