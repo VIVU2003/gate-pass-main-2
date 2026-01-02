@@ -6,8 +6,11 @@
     "lib": "lib"
   },
   "scripts": {
-    "build": "tsc",
-    "dev": "tsx watch src/index.ts"
+    "dev": "nodemon",
+    "build": "tsc -b",
+    "start": "node dist/index.js",
+    "postinstall": "prisma generate",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
