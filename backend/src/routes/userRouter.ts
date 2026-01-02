@@ -7,34 +7,15 @@ import { signinVal } from "../lib/validators/userValidator";
 import { userMail } from "../lib/validators/userValidator";
 import {JWT_SECRET} from "../config";
 import uAuth from "../middleware/uAuth"
-import nodemailer from "nodemailer";
+import sgMail from "@sendgrid/mail";
 import crypto from "crypto";
 import {addHours} from "date-fns";
 
-const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false, // true for 465, false for 587
-    auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASSWORD,
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-});
-
-// Verify transporter configuration
-transporter.verify(function(error, success) {
-    if (error) {
-        console.log('SMTP connection error:', error);
-    } else {
-        console.log('Server is ready to send emails');
-    }
-});
+// Initialize SendGrid
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
 
 const generateToken = (length = 5): string => {
-    return crypto.randomBytes(length).toString('hex'); // returns a hexadecimal token
+    return crypto.randomBytes(length).toString('hex');
 };
 
 const prisma = new PrismaClient();
@@ -128,9 +109,9 @@ router.post(
 
         const link = `http://localhost:5173/auth?token=${parentEmail?.parentAuthToken}`;
         
-        await transporter.sendMail({
-          from: process.env.EMAIL,
-          to: parentEmail?.parentEmail,
+        const msg = {
+          to: parentEmail?.parentEmail || '',
+          from: process.env.EMAIL || '', // Must be verified in SendGrid
           subject: "Authentication Request",
           html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; border: 1px solid #ddd; border-radius: 10px; padding: 20px; background-color: #f9f9f9;">
@@ -162,7 +143,9 @@ router.post(
           <p style="font-size: 14px; color: #888; text-align: center; margin-top: 20px;">If you did not request this, please ignore this email.</p>
         </div>
       `,
-        });
+        };
+
+        await sgMail.send(msg);
         return res.json({ message: "Mail sent successfully" });
       } catch (e) {
         console.error("Email error:", e);
