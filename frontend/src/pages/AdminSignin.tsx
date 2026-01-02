@@ -11,7 +11,7 @@ function AdminSignin() {
   const navigate = useNavigate();
   async function handleSignin() {
     try {
-      const res = await axios.post("http://localhost:3000/api/admin/signin", {
+      const res = await axios.post("https://gate-pass-ik17.onrender.com/api/admin/signin", {
         email,
         password,
       });

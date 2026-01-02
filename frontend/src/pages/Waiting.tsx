@@ -10,7 +10,7 @@ export default function Waiting() {
   const navigate = useNavigate();
   async function checkUpdates() {
     try {
-      const res = await axios.get("http://localhost:3000/api/user/me", {
+      const res = await axios.get("https://gate-pass-ik17.onrender.com/api/user/me", {
         headers: {
           authorization: localStorage.getItem("token"),
         },

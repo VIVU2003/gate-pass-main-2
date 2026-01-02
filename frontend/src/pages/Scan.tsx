@@ -12,7 +12,7 @@ export default function Scan() {
 
   async function allDone() {
     try {
-      await axios.put(`http://localhost:3000/api/guard/done?id=${id}`);
+      await axios.put(`https://gate-pass-ik17.onrender.com/api/guard/done?id=${id}`);
       alert("All done");
     } catch (e) {
       alert("Error occurred");
@@ -21,7 +21,7 @@ export default function Scan() {
 
   async function getDetail() {
     try {
-      const res = await axios.get("http://localhost:3000/api/user/me", {
+      const res = await axios.get("https://gate-pass-ik17.onrender.com/api/user/me", {
         headers: { Authorization: token },
       });
       setName(res.data.name);

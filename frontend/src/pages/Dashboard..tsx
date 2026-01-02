@@ -14,7 +14,7 @@ function LeaveApplication() {
   async function handleLeaveApplication() {
     try {
       await axios.post(
-        "http://localhost:3000/api/user/send",
+        "https://gate-pass-ik17.onrender.com/api/user/send",
         {
           from: fromDate,
           to: toDate,

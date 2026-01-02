@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import {useState } from "react";
 import Heading from "../components/Heading";
 import Inputbox from "../components/InputBox";
 import Button from "../components/Button";
@@ -14,7 +14,7 @@ function AdminSignup() {
   const navigate = useNavigate();
   async function handleSignUp() {
     try {
-      const res = await axios.post("http://localhost:3000/api/admin/signup", {
+      const res = await axios.post("https://gate-pass-ik17.onrender.com/api/admin/signup", {
         name,
         email,
         password,

@@ -15,7 +15,7 @@ function Signup() {
   const navigate = useNavigate();
   async function handleSignUp() {
     try {
-      const res = await axios.post("http://localhost:3000/api/user/signup", {
+      const res = await axios.post("https://gate-pass-ik17.onrender.com/api/user/signup", {
         name,
         email,
         password,

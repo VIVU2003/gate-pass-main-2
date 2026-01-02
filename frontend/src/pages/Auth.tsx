@@ -10,8 +10,9 @@ export default function Auth() {
   async function handleAuth() {
     try {
       const res = await axios.put(
-        `http://localhost:3000/api/user/auth?token=${token}`
+        `https://gate-pass-ik17.onrender.com/api/user/auth?token=${token}`
       );
+      console.log(res);
       alert("Authenticated");
     } catch (e) {
       alert("Cannot authenticate");

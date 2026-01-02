@@ -12,7 +12,7 @@ function Admindash() {
 
   async function fetchUsers() {
     try {
-      const res = await axios.get("http://localhost:3000/api/admin/getAll", {
+      const res = await axios.get("https://gate-pass-ik17.onrender.com/api/admin/getAll", {
         headers: {
           authorization: localStorage.getItem("token"),
         },
@@ -30,7 +30,7 @@ function Admindash() {
   async function allowUser(id: number) {
     try {
       await axios.put(
-        `http://localhost:3000/api/admin/allow?id=${id}`,
+        `https://gate-pass-ik17.onrender.com/api/admin/allow?id=${id}`,
         {},
         {
           headers: {
