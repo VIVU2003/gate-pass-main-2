@@ -107,7 +107,7 @@ router.post(
           },
         });
 
-        const link = `https://gate-pass-ashy.vercel.app/auth?token=${parentEmail?.parentAuthToken}`;
+        const link = `https://gate-pass-main-2.vercel.app/auth?token=${parentEmail?.parentAuthToken}`;
         
         const msg = {
           to: parentEmail?.parentEmail || '',
