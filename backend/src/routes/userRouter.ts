@@ -107,7 +107,7 @@ router.post(
           },
         });
 
-        const link = `http://localhost:5173/auth?token=${parentEmail?.parentAuthToken}`;
+        const link = `https://gate-pass-ashy.vercel.app/auth?token=${parentEmail?.parentAuthToken}`;
         
         const msg = {
           to: parentEmail?.parentEmail || '',
